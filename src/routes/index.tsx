@@ -24,12 +24,13 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const ACTIONS: ReadonlyArray<{ to: string; label: string; primary?: boolean }> = [
-  { to: "/schools", label: "Find Schools", primary: true },
+const ACTIONS = [
+  { to: "/schools", label: "Find Schools" },
   { to: "/emergency", label: "Emergency" },
   { to: "/volunteer", label: "Volunteer" },
   { to: "/resources", label: "Resources" },
-];
+] as const;
+
 
 
 function HomePage() {
@@ -52,12 +53,12 @@ function HomePage() {
               services across Johannesburg, Pretoria, Ekurhuleni and the West Rand.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {ACTIONS.map((a) => (
+              {ACTIONS.map((a, i) => (
                 <Link
                   key={a.to}
                   to={a.to}
                   className={
-                    a.primary
+                    i === 0
                       ? "bg-navy text-white text-[11px] font-semibold uppercase tracking-wider py-4 px-3 text-center hover:bg-ocean transition-all"
                       : "border border-navy/20 text-navy text-[11px] font-semibold uppercase tracking-wider py-4 px-3 text-center hover:bg-navy/5 transition-all"
                   }
@@ -66,6 +67,7 @@ function HomePage() {
                 </Link>
               ))}
             </div>
+
           </div>
           <div className="lg:col-span-5 animate-reveal [animation-delay:200ms]">
             <img

@@ -49,7 +49,7 @@ const REQUIRED_DOCS = [
 ];
 
 function SchoolProfile() {
-  const { school } = Route.useLoaderData();
+  const { school } = Route.useLoaderData() as { school: ReturnType<typeof getSchool> & {} };
 
   return (
     <SiteLayout>
