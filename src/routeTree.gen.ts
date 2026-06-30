@@ -9,38 +9,194 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as TherapistsRouteImport } from './routes/therapists'
+import { Route as SchoolsRouteImport } from './routes/schools'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SchoolsSchoolIdRouteImport } from './routes/schools.$schoolId'
 
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TherapistsRoute = TherapistsRouteImport.update({
+  id: '/therapists',
+  path: '/therapists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchoolsRoute = SchoolsRouteImport.update({
+  id: '/schools',
+  path: '/schools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivitiesRoute = ActivitiesRouteImport.update({
+  id: '/activities',
+  path: '/activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchoolsSchoolIdRoute = SchoolsSchoolIdRouteImport.update({
+  id: '/$schoolId',
+  path: '/$schoolId',
+  getParentRoute: () => SchoolsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/resources': typeof ResourcesRoute
+  '/schools': typeof SchoolsRouteWithChildren
+  '/therapists': typeof TherapistsRoute
+  '/volunteer': typeof VolunteerRoute
+  '/schools/$schoolId': typeof SchoolsSchoolIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/resources': typeof ResourcesRoute
+  '/schools': typeof SchoolsRouteWithChildren
+  '/therapists': typeof TherapistsRoute
+  '/volunteer': typeof VolunteerRoute
+  '/schools/$schoolId': typeof SchoolsSchoolIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/resources': typeof ResourcesRoute
+  '/schools': typeof SchoolsRouteWithChildren
+  '/therapists': typeof TherapistsRoute
+  '/volunteer': typeof VolunteerRoute
+  '/schools/$schoolId': typeof SchoolsSchoolIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activities'
+    | '/contact'
+    | '/emergency'
+    | '/resources'
+    | '/schools'
+    | '/therapists'
+    | '/volunteer'
+    | '/schools/$schoolId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activities'
+    | '/contact'
+    | '/emergency'
+    | '/resources'
+    | '/schools'
+    | '/therapists'
+    | '/volunteer'
+    | '/schools/$schoolId'
+  id:
+    | '__root__'
+    | '/'
+    | '/activities'
+    | '/contact'
+    | '/emergency'
+    | '/resources'
+    | '/schools'
+    | '/therapists'
+    | '/volunteer'
+    | '/schools/$schoolId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivitiesRoute: typeof ActivitiesRoute
+  ContactRoute: typeof ContactRoute
+  EmergencyRoute: typeof EmergencyRoute
+  ResourcesRoute: typeof ResourcesRoute
+  SchoolsRoute: typeof SchoolsRouteWithChildren
+  TherapistsRoute: typeof TherapistsRoute
+  VolunteerRoute: typeof VolunteerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/therapists': {
+      id: '/therapists'
+      path: '/therapists'
+      fullPath: '/therapists'
+      preLoaderRoute: typeof TherapistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schools': {
+      id: '/schools'
+      path: '/schools'
+      fullPath: '/schools'
+      preLoaderRoute: typeof SchoolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activities': {
+      id: '/activities'
+      path: '/activities'
+      fullPath: '/activities'
+      preLoaderRoute: typeof ActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +204,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schools/$schoolId': {
+      id: '/schools/$schoolId'
+      path: '/$schoolId'
+      fullPath: '/schools/$schoolId'
+      preLoaderRoute: typeof SchoolsSchoolIdRouteImport
+      parentRoute: typeof SchoolsRoute
+    }
   }
 }
 
+interface SchoolsRouteChildren {
+  SchoolsSchoolIdRoute: typeof SchoolsSchoolIdRoute
+}
+
+const SchoolsRouteChildren: SchoolsRouteChildren = {
+  SchoolsSchoolIdRoute: SchoolsSchoolIdRoute,
+}
+
+const SchoolsRouteWithChildren =
+  SchoolsRoute._addFileChildren(SchoolsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivitiesRoute: ActivitiesRoute,
+  ContactRoute: ContactRoute,
+  EmergencyRoute: EmergencyRoute,
+  ResourcesRoute: ResourcesRoute,
+  SchoolsRoute: SchoolsRouteWithChildren,
+  TherapistsRoute: TherapistsRoute,
+  VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

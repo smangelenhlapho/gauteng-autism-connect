@@ -24,12 +24,13 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const ACTIONS = [
+const ACTIONS: ReadonlyArray<{ to: string; label: string; primary?: boolean }> = [
   { to: "/schools", label: "Find Schools", primary: true },
   { to: "/emergency", label: "Emergency" },
   { to: "/volunteer", label: "Volunteer" },
   { to: "/resources", label: "Resources" },
-] as const;
+];
+
 
 function HomePage() {
   const featured = schools.slice(0, 6);
