@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Find autism schools, therapists, clinics and support services across Gauteng. A trusted information hub for families, educators and caregivers.",
       },
       { name: "author", content: "Autism Connect Gauteng" },
-      { property: "og:title", content: "Autism Connect Gauteng" },
+      { property: "og:title", content: "Autism Connect Gauteng — Schools, Therapists & Support" },
       {
         property: "og:description",
         content:
@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Autism Connect Gauteng — Schools, Therapists & Support" },
+      { name: "description", content: "Gauteng Autism Connect is a web app connecting families to autism schools and support services in Gauteng." },
+      { property: "og:description", content: "Gauteng Autism Connect is a web app connecting families to autism schools and support services in Gauteng." },
+      { name: "twitter:description", content: "Gauteng Autism Connect is a web app connecting families to autism schools and support services in Gauteng." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a5202f5-3f57-4436-b17e-59e3ebdb6370/id-preview-9e5e2711--24745348-8c09-47ba-8c65-2d2b1a350305.lovable.app-1782838163691.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0a5202f5-3f57-4436-b17e-59e3ebdb6370/id-preview-9e5e2711--24745348-8c09-47ba-8c65-2d2b1a350305.lovable.app-1782838163691.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
